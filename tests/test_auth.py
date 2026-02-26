@@ -51,7 +51,7 @@ def test_login_user():
     response= client.post("/auth/login",json={"username":"testuser","password":"secret"})
     assert response.status_code == 200
     assert response.json()["message"] == "Login success"
-    assert "access_token" in response.cookies.get_dict()
+    assert "access_token" in response.cookies
 
 # Login with wrong password
 def test_login_invalid_user():
