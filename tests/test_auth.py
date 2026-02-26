@@ -47,10 +47,11 @@ def test_register_exiting_user():
 
 # login user
 def test_login_user():
-    response= client.post("auth/login",json={"username":"testuser","password":"secret"})
+    client.post("/auth/register", json={"username": "testuser", "password": "secret"})
+    response= client.post("/auth/login",json={"username":"testuser","password":"secret"})
     assert response.status_code == 200
     assert response.json()["message"] == "Login Success"
-    assert "access_token" in response.cookies
+    assert "access_token" in response.cookies.get_dict()
 
 # Login with wrong password
 def test_login_invalid_user():
