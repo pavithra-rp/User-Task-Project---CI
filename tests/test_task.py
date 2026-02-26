@@ -30,10 +30,10 @@ app.dependency_overrides[login_user] = override_login
 
 client = TestClient(app)
 
-# @pytest.fixture(autouse=True)
-# def clear_tables():
-#     Base.metadata.drop_all(bind=engine)
-#     Base.metadata.create_all(bind=engine)
+@pytest.fixture(autouse=True)
+def clear_tables():
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
 
 def test_create_task():
     res = client.post("/tasks/", json={"title": "Task1"})

@@ -27,10 +27,10 @@ Base.metadata.create_all(bind=engine)
 # initialize test client
 client= TestClient(app)
 
-# @pytest.fixture(autouse=True)
-# def reset_db():
-#     Base.metadata.drop_all(bind=engine)
-#     Base.metadata.create_all(bind=engine)
+@pytest.fixture(autouse=True)
+def reset_db():
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
     
 # new user
 def test_register_user():
