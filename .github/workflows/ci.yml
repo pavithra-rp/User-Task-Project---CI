@@ -40,6 +40,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: pip install -r requirements.txt        
       - name: Make startup.sh executable
         run: chmod +x startup.sh
       - name: Deploy
