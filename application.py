@@ -11,3 +11,5 @@ app.include_router(task.router)
 @app.get("/")
 def root():
     return {"message": "FastAPI + PostgreSQL Project Running"}
+
+
